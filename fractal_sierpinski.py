@@ -20,11 +20,17 @@ def gen_fractal(w,h,attractors,iterations,colored,coef, output):
 		draw.point( start_point , fill=color )
 	image.save( output )
 
-attractors = [ (2000/2,0), (2000,2000), (0,2000) ]
+#attractors = [ (1000,0),(2000,2000),(0,2000)]
+attractors = [ ( r(0,2000), r(0,2000) ) for cord in range(0,r(3,10)) ]
+name_postfix = ''
+for cord in attractors: name_postfix+='_'+str(cord[0])+'.'+str(cord[1])+'_'
 h,w = 2000,2000
 iterations = 500000
 colored = True
-coef = 2
-output = 'fractal_triangle.png'
+coef = r(2,4)
+coeff = r(1,9)/10
+coef+=coeff
+output = 'fractals/fractal_triangle'+str(coef)+name_postfix+'.png'
+
 
 gen_fractal(h,w,attractors,iterations, colored, coef, output)
